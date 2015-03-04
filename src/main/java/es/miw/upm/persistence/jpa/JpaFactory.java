@@ -26,5 +26,6 @@ public class JpaFactory {
                 PersistenceUnitProperties.DROP_AND_CREATE);
         entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT, properties);
     }
+    
 
 }
