@@ -1,4 +1,4 @@
-package es.miw.upm.persistence.models.daos.jdbc;
+package es.miw.upm.persistence.models.daos.jpa;
 
 import static org.junit.Assert.*;
 
