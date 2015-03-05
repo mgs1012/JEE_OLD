@@ -10,5 +10,4 @@ public class VotoTest {
 	public void test() {
 		fail("Not yet implemented");
 	}
-
 }
