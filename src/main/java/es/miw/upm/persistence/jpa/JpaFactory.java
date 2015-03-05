@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 public class JpaFactory {
-    private static final String PERSISTENCE_UNIT = "BBDD";
+    private static final String PERSISTENCE_UNIT = "Votaciones";
 
     private static EntityManagerFactory entityManagerFactory = null;
 
