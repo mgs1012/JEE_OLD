@@ -1,6 +1,8 @@
-package es.miw.upm.persistence.models.daos;
+package es.miw.upm.persistence.models.dao.jdbc;
 
-public abstract class DaoFactory {
+import es.miw.upm.persistence.models.daos.DaoFactory;
+
+public abstract interface DaoJdbcFactory{
 	
     public static DaoFactory factory = null;
 
@@ -13,11 +15,9 @@ public abstract class DaoFactory {
         return factory;
     }
 
-    public abstract TemaDao getTemaDao();
+    public abstract TemaDaoJdbc getTemaDaoJdbc();
 
-    public abstract VotoDao getVotoDao();
+    public abstract VotoDaoJdbc getVotoDaoJdbc();
 
 
 }
-
-
