@@ -1,20 +1,10 @@
 package es.miw.upm.persistence.models.dao.jpa;
 
-public class TemaDaoJpa {
 
-	import java.util.ArrayList;
-	import java.util.List;
+import javax.persistence.Id;
+import es.miw.upm.persistence.models.daos.TemaDao;
 
-	import javax.persistence.CascadeType;
-	import javax.persistence.EntityManager;
-	import javax.persistence.Id;
-	import javax.persistence.OneToMany;
-
-	import es.miw.upm.persistence.jpa.JpaFactory;
-	import es.miw.upm.persistence.jpa.Voto;
-	import es.miw.upm.persistence.models.utils.NivelEstudios;
-
-	public class Tema {
+public class TemaDaoJpa implements TemaDao {
 		
 		@Id
 	    private Integer id;

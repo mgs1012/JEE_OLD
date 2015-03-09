@@ -6,10 +6,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import es.miw.upm.persistence.jpa.Tema;
+import es.miw.upm.persistence.models.daos.VotoDao;
+import es.miw.upm.persistence.models.entities.VotoE;
 import es.miw.upm.persistence.models.utils.NivelEstudios;
 
-public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao{
-	
+public class VotoDaoJpa extends GenericDaoJpa<VotoE, Integer> implements VotoDao{
+
 	@Id
     @GeneratedValue
     private Integer id;
