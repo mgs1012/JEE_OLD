@@ -8,12 +8,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import es.miw.upm.persistence.models.dao.jpa.Tema;
+import es.miw.upm.persistence.models.utils.NivelEstudios;
 
 @Entity
 @Table(name = VotoE.TABLE)
 public class VotoE {
 
-	    public static final String TABLE = "Voto";
+	    public static final String TABLE = "voto";
 
 	    public static final String ID = "ID";
 
@@ -22,29 +24,63 @@ public class VotoE {
 	    @Column(name = ID)
 	    private Integer id;
 
-	    public static final String IDENTIFICATION = "IDENTIFICATION";
+	    public static final String IP = "IP";
 
-	    @Column(name = IDENTIFICATION)
-	    private String identification;
+	    private String ip;
+	    
+	    public static final String NIVELESTUDIOS = "NIVELESTUDIOS";
 
-	    public static final String DESCRIPTION = "DESCRIPTION";
+	    private NivelEstudios nivelEstudios;
 
-	    @Column(name = DESCRIPTION)
-	    private String description;
+	    public static final String TEMA = "TEMA";
 
-	    public static final String USER_ID = "USER_ID";
-
+	    // Relacion bidireccional: 1:0..n
+	    // relacion mapeada en la otra entidad
 	    @ManyToOne
-	    @JoinColumn(name = USER_ID)
-	    private User user;
+	    @JoinColumn(name = TEMA)
+	    private TemaE tema;
 
-	    public VotoE(String identification, String description) {
-	        this.identification = identification;
-	        this.description = description;
+	    public VotoE(Integer id, String ip, NivelEstudios nivelEstudios, TemaE tema) {
+	        this.id = id;
+	        this.ip = ip;
+	        this.nivelEstudios = nivelEstudios;
+	        this.tema = tema; 
 	    }
 
-	    public Vehicle() {
+	    public VotoE() {
 	    }
+	    
+	    public Integer getId() {
+			return id;
+		}
+
+		public void setId(Integer id) {
+			this.id = id;
+		}
+
+		public String getIp() {
+			return ip;
+		}
+
+		public void setIp(String ip) {
+			this.ip = ip;
+		}
+
+		public NivelEstudios getNivelEstudios() {
+			return nivelEstudios;
+		}
+
+		public void setNivelEstudios(NivelEstudios nivelEstudios) {
+			this.nivelEstudios = nivelEstudios;
+		}
+
+		public TemaE getTema() {
+			return tema;
+		}
+
+		public void setTema(TemaE tema) {
+			this.tema = tema;
+		}
 
 
 }
