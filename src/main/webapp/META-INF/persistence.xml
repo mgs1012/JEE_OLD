@@ -5,9 +5,6 @@
 	<persistence-unit name="Votaciones" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>pruebas.User1</class>
-		
-		<class>es.miw.upm.persistence.jpa.Voto</class>
-		<class>es.miw.upm.persistence.jpa.Tema</class>
 		<class>es.miw.upm.persistence.models.entities.VotoE</class>
 		<class>es.miw.upm.persistence.models.entities.TemaE</class>
 		<properties>
