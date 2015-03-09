@@ -1,7 +1,7 @@
 package es.miw.upm.persistence.models.daos;
 
-import es.miw.upm.persistance.models.dao.jpa.GenericDaoJpa;
+import es.miw.upm.persistence.models.entities.TemaE;
 
-public interface TemaDao extends GenericDao {
+public interface TemaDao extends GenericDao<TemaE, Integer> {
 
 }
