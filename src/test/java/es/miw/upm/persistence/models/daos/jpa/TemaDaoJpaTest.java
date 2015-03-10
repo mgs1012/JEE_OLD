@@ -1,20 +1,36 @@
 package es.miw.upm.persistence.models.daos.jpa;
 
+import java.util.ArrayList;
+
+import org.junit.Before;
+
 import es.miw.upm.persistence.models.daos.TemaDao;
 import es.miw.upm.persistence.models.entities.TemaE;
 
 public class TemaDaoJpaTest {
 	
-    private TemaDao dao;
+    private TemaDao temadao;
 
     private TemaE tema;
     
+    @Before
+    public void before(){
+    	this.tema = new Tema(10, "");
+    }
+    
+    Tema tema1 = new Tema(1, "Deporte", "Tema dedicado a toda actividad deportiva.", "¿?");
+    List<Voto> votos = new ArrayList<Voto>();
+    votos.add(new Voto(001, "138.100.152.01", NivelEstudios.MEDIOS, tema1));
+    votos.add(new Voto(002, "138.100.152.02", NivelEstudios.SUPERIORES, tema1));
+    tema1.setVotos(votos);
     
 
    /* @BeforeClass
     public static void beforeClass() {
         DaoFactory.setFactory(new DaoJdbcFactory());
         DaoJdbcFactory.dropAndCreateTables();
+        //Inicializar DAO
+         
     }
 
     @Before
