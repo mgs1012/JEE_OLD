@@ -1,8 +1,12 @@
 package es.miw.upm.persistence.models.dao.jpa;
 
 
+import java.util.List;
+
 import javax.persistence.Id;
+
 import es.miw.upm.persistence.models.daos.TemaDao;
+import es.miw.upm.persistence.models.entities.TemaE;
 
 public class TemaDaoJpa implements TemaDao {
 		
@@ -14,6 +18,36 @@ public class TemaDaoJpa implements TemaDao {
 	    private String descripcion;
 	    
 	    private String pregunta;
+
+		@Override
+		public void create(TemaE entity) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public TemaE read(Integer id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void update(TemaE entity) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void deleteById(Integer id) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public List<TemaE> findAll() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 	    /*   @OneToMany(cascade = CascadeType.ALL, mappedBy = "tema")
 	    private List<Voto> votos;

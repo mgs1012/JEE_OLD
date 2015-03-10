@@ -99,5 +99,12 @@ public class TemaE {
 	        return "Tema [Identificador :" + id + "\n" + "Título: "+ titulo + "\n" + "Descripcion :" + descripcion  + "\n"+ " Pregunta : " +  pregunta  + "\n"+ "Votos :" + votos + "]";
 	    }
 
+	 @Override
+	 public boolean equals(Object obj) {
+		TemaE temaE = (TemaE) obj; 
+		return id.equals(temaE.id) && titulo.equalsIgnoreCase(temaE.titulo) && pregunta.equalsIgnoreCase(temaE.pregunta);
+	}
+
+	 
 
 }

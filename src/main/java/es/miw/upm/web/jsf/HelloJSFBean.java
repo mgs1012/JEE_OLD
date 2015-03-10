@@ -9,4 +9,8 @@ public class HelloJSFBean {
     public String getName() {
         return name;
     }
+    
+    public String name(){
+    	return name;
+    }
 }

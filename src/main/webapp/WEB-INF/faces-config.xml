@@ -24,15 +24,22 @@
 			<if>#{!navigator.value}</if>
 			<to-view-id>/jsf/staticPage.xhtml</to-view-id>
 		</navigation-case>
+			<navigation-case>
+			<from-outcome>bean</from-outcome>
+			<if>#{!navigator.value}</if>
+			<to-view-id>/jsf/helloJSF.xhtml</to-view-id>
+		</navigation-case>
 		<!-- Por defecto -->
-	</navigation-rule>
-	<navigation-rule>
-		<display-name>jsf/navigator.xhtml</display-name>
-		<from-view-id>/jsf/navigator.xhtml</from-view-id>
 		<navigation-case>
+			<if>#{!navigator.value}</if>
 			<to-view-id>/jsf/navigator.xhtml</to-view-id>
 		</navigation-case>
+			<navigation-case>
+			<if>#{!navigator.value}</if>
+			<to-view-id>/navigator.java</to-view-id>
+		</navigation-case>
 	</navigation-rule>
+
 	<application>
 		<locale-config>
 			<default-locale>es</default-locale>

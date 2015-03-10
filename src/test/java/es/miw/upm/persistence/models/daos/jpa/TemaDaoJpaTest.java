@@ -1,11 +1,23 @@
 package es.miw.upm.persistence.models.daos.jpa;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
+import es.miw.upm.persistence.jpa.JpaFactory;
+import es.miw.upm.persistence.models.dao.jdbc.DaoJdbcFactory;
+import es.miw.upm.persistence.models.dao.jpa.DaoJpaFactory;
+import es.miw.upm.persistence.models.daos.DaoFactory;
 import es.miw.upm.persistence.models.daos.TemaDao;
 import es.miw.upm.persistence.models.entities.TemaE;
+import es.miw.upm.persistence.models.entities.VotoE;
+import es.miw.upm.persistence.models.utils.NivelEstudios;
 
 public class TemaDaoJpaTest {
 	
@@ -13,76 +25,68 @@ public class TemaDaoJpaTest {
 
     private TemaE tema;
     
-    @Before
-    public void before(){
-    	this.tema = new Tema(10, "");
-    }
     
-    Tema tema1 = new Tema(1, "Deporte", "Tema dedicado a toda actividad deportiva.", "¿?");
-    List<Voto> votos = new ArrayList<Voto>();
-    votos.add(new Voto(001, "138.100.152.01", NivelEstudios.MEDIOS, tema1));
-    votos.add(new Voto(002, "138.100.152.02", NivelEstudios.SUPERIORES, tema1));
-    tema1.setVotos(votos);
-    
-
-   /* @BeforeClass
+    @BeforeClass
     public static void beforeClass() {
-        DaoFactory.setFactory(new DaoJdbcFactory());
-        DaoJdbcFactory.dropAndCreateTables();
-        //Inicializar DAO
-         
-    }
+    	 //Inicializar DAO
+    	DaoFactory.setFactory(new DaoJpaFactory());
+    	JpaFactory.dropAndCreateTables();
 
+    }
+    
     @Before
-    public void before() {
-        this.tema = new User("tema", "pass", new Address("city", "street"));
-        this.tema.setCategory(new Category(666, "666", "666"));
-        dao = DaoFactory.getFactory().getUserDao();
-        dao.create(tema);
+    public void init(){
+    	
+    	//temadao = DaoFactory.getFactory().getTemaDao();
+    	tema = new TemaE(1, "Baloncesto", "Tema dedicado a dicha actividad deportiva.", "¿Cómo valorarías tu pasión por este deporte?");
+    	temadao.create(tema);
+    	
+    	/*       List<VotoE> votos = new ArrayList<VotoE>();
+        votos.add(new VotoE(001, "138.100.152.01", NivelEstudios.MEDIOS, tema));
+        votos.add(new VotoE(002, "138.100.152.02", NivelEstudios.SUPERIORES, tema));
+        tema.setVotos(votos);*/
+        
     }
-
+    
+    @Test
+    public void testCreate() {
+    	TemaE tema2 = new TemaE(2, "Fútbol", "Tema dedicado a dicha actividad deportiva.", "¿Cómo valorarías tu pasión por este deporte?");
+    	temadao.create(tema2);
+        assertEquals(tema2, temadao.read(tema2.getId()));
+    }
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+    public void testRead() {
+        assertEquals(this.tema, temadao.read(tema.getId()));
+    }
+	
+	@Test
+	public void testUpdate(){
+		tema.setTitulo("Lectura");
+		tema.setPregunta("¿Te gusta leer?");
+		temadao.update(tema);
+		TemaE tema1 = temadao.read(tema.getId());
+		assertEquals(tema1.getTitulo(),"Lectura");
+		assertEquals(tema1.getTitulo(),"¿Te gusta leer?");
 	}
 	
-    @Test
-    public void testRead() {
-        assertEquals(user, dao.read(user.getId()));
-    }
-
-    @Test
-    public void testUpdateCategory() {
-    	tema.setName("other");
-    	tema.setPassword("other");
-    	tema.getAddress().setCity("other");
-    	tema.getAddress().setStreet("other");
-    	tema.getCategory().setName("other");
-        dao.update(tema);
-        assertEquals(tema, dao.read(tema.getId()));
-    }
-
-    @Test
-    public void testDeleteByID() {
-        dao.deleteById(tema.getId());
-        assertNull(dao.read(tema.getId()));
-        assertNull(DaoFactory.getFactory().getCategoryDao().read(tema.getCategory().getId()));
-    }
-
-    @Test
-    public void testFindAll() {
-        this.user = new User("user", "pass", new Address("city", "street"));
-        this.user.setCategory(new Category(333, "333", "333"));
-        dao = DaoFactory.getFactory().getUserDao();
-        dao.create(user);
-        assertEquals(2, dao.findAll().size());
-    }
-
-    @After
-    public void after() {
-        DaoJdbcFactory.dropAndCreateTables();
-    } */
-
+	   @Test
+	   public void testDeleteByID() {
+		   TemaE t = new TemaE();
+	        temadao.create(t);
+	        temadao.deleteById(t.getId());
+	        assertNull(temadao.read(t.getId()));
+	    }
+	   
+	   
+	   @Test
+	    public void testFindAll() {
+	        assertEquals(1, temadao.findAll().size());
+	    }
+	   
+	   @After
+	    public void after() {
+		   JpaFactory.dropAndCreateTables();
+	    } 
 
 }
