@@ -2,13 +2,14 @@ package es.miw.upm.persistence.models.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import es.miw.upm.persistence.models.dao.jpa.Tema;
 import es.miw.upm.persistence.models.utils.NivelEstudios;
 
 @Entity
@@ -30,12 +31,13 @@ public class VotoE {
 	    
 	    public static final String NIVELESTUDIOS = "NIVELESTUDIOS";
 
+	    @Enumerated(EnumType.STRING)
 	    private NivelEstudios nivelEstudios;
 
 	    public static final String TEMA = "TEMA";
 
-	    // Relacion bidireccional: 1:0..n
-	    // relacion mapeada en la otra entidad
+	    // Relacion unidireccional: 1:0..n
+
 	    @ManyToOne
 	    @JoinColumn(name = TEMA)
 	    private TemaE tema;

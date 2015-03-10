@@ -37,8 +37,8 @@ public class TemaE {
     @Column(name = PREGUNTA)
     private String pregunta;
 
-    // Relacion bidireccional: 1:0..n
-    // relacion mapeada en la otra entidad
+    // Relacion unidireccional: 1:0..n
+    // mapeado
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tema")
     private List<VotoE> votos;
 
